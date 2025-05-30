@@ -14,27 +14,34 @@ void processTextFile(const std::string& filename) {
     CharQueue digits;
 
     std::ifstream input(filename);
-    if (!input.is_open()) {
+    if (!input.is_open())
+    {
         throw std::runtime_error("Unable to open file " + filename);
     }
 
     char c;
-    while (input.get(c)) {
-        if (isDigit(c)) {
+    while (input.get(c))
+    {
+        if (isDigit(c))
+        {
             digits.push(c);
-        } else {
+        }
+        else
+        {
             non_digits.push(c);
         }
     }
 
-    // Выводим не-цифры в правильном порядке
-    while (!non_digits.empty()) {
+    // Non-didgits output
+    while (!non_digits.empty())
+    {
         std::cout << non_digits.front();
         non_digits.pop();
     }
 
-    // Выводим цифры в правильном порядке
-    while (!digits.empty()) {
+    // Digits output
+    while (!digits.empty())
+    {
         std::cout << digits.front();
         digits.pop();
     }
