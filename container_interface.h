@@ -10,7 +10,7 @@ public:
     virtual ~ContainerInterface() = default;
     virtual void push(const T& value) = 0;
     virtual void pop() = 0;
-    virtual T top() const = 0;
+    virtual T front() const = 0;
     virtual bool empty() const = 0;
 };
 

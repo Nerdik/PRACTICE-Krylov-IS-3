@@ -17,7 +17,6 @@ public:
     void push(const char& c) override;
     void pop() override;
     char front() const;
-    char top() const override { return front(); }
 };
 
 #endif
