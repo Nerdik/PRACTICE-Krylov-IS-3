@@ -2,7 +2,6 @@
 #define DOUBLE_LIST_H
 
 #include <stdexcept>
-#include <cstddef>
 
 template <class DataType>
 class CustomList

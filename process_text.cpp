@@ -5,11 +5,13 @@
 #include <fstream>
 #include <iostream>
 
-bool isDigit(char c) {
+bool isDigit(char c)
+{
     return c >= '0' && c <= '9';
 }
 
-void processTextFile(const std::string& filename) {
+void processTextFile(const std::string& filename)
+{
     CharQueue non_digits;
     CharQueue digits;
 
