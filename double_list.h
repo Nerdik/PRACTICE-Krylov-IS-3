@@ -35,7 +35,7 @@ public:
         clear();
     }
     
-    // Добавление в конец (для очереди)
+    // Add back
     void pushBack(const DataType& value) {
         ListNode* newNode = new ListNode(value, tail);
         
@@ -48,7 +48,7 @@ public:
         count++;
     }
     
-    // Удаление из начала (для очереди)
+    // Delete front element
     void removeFront() {
         if (empty()) {
             throw std::logic_error("List is empty");
@@ -66,7 +66,7 @@ public:
         count--;
     }
     
-    // Получение первого элемента
+    // Get first element
     DataType front() const {
         if (empty()) {
             throw std::logic_error("List is empty");
@@ -81,10 +81,6 @@ public:
     size_t size() const {
         return count;
     }
-    
-    // Запрещаем копирование и присваивание
-    CustomList(const CustomList&) = delete;
-    CustomList& operator=(const CustomList&) = delete;
 };
 
 #endif
