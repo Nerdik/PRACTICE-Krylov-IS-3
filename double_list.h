@@ -1,6 +1,4 @@
-﻿//Point 1. Double link list class tamplate
-
-#ifndef DOUBLE_LIST_H
+﻿#ifndef DOUBLE_LIST_H
 #define DOUBLE_LIST_H
 
 #include <stdexcept>
@@ -10,107 +8,83 @@ template <class DataType>
 class CustomList
 {
 private:
-    struct ListElement
+    struct ListNode
     {
-        DataType value;
-        ListElement* previous;
-        ListElement* next;
+        DataType data;
+        ListNode* prev;
+        ListNode* next;
         
-        ListElement(const DataType& val, ListElement* prev = nullptr, ListElement* nxt = nullptr) 
-            : value(val), previous(prev), next(nxt) {}
+        ListNode(const DataType& val, ListNode* p = nullptr, ListNode* n = nullptr) 
+            : data(val), prev(p), next(n) {}
     };
 
-    ListElement* first;
-    ListElement* last;
-    std::size_t element_count;
+    ListNode* head;
+    ListNode* tail;
+    size_t count;
 
-    void clearAllElements()
-    {
-        while (!isEmpty())
-        {
-            removeLastElement();
+    void clear() {
+        while (!empty()) {
+            removeFront();
         }
     }
 
 public:
-    // Initialize
-    CustomList() : first(nullptr), last(nullptr), element_count(0) {}
+    CustomList() : head(nullptr), tail(nullptr), count(0) {}
     
-    // Copy
-    CustomList(const CustomList& source) : first(nullptr), last(nullptr), element_count(0)
-    {
-        ListElement* current = source.first;
-        while (current != nullptr)
-        {
-            appendElement(current->value);
-            current = current->next;
-        }
+    ~CustomList() {
+        clear();
     }
     
-    // Clear
-    ~CustomList()
-    {
-        clearAllElements();
-    }
-    
-    // Add data
-    void appendElement(const DataType& item)
-    {
-        ListElement* new_element = new ListElement(item, last);
+    // Добавление в конец (для очереди)
+    void pushBack(const DataType& value) {
+        ListNode* newNode = new ListNode(value, tail);
         
-        if (isEmpty()) {
-            first = last = new_element;
+        if (empty()) {
+            head = tail = newNode;
         } else {
-            last->next = new_element;
-            last = new_element;
+            tail->next = newNode;
+            tail = newNode;
         }
-        element_count++;
+        count++;
     }
     
-    // Delete
-    void removeLastElement()
-    {
-        if (isEmpty())
-        {
-            throw std::logic_error("Cannot remove from empty container");
+    // Удаление из начала (для очереди)
+    void removeFront() {
+        if (empty()) {
+            throw std::logic_error("List is empty");
         }
         
-        if (first == last)
-        {
-            delete last;
-            first = last = nullptr;
-        }
-        else
-        {
-            ListElement* temp = last;
-            last = last->previous;
-            last->next = nullptr;
+        if (head == tail) {
+            delete head;
+            head = tail = nullptr;
+        } else {
+            ListNode* temp = head;
+            head = head->next;
+            head->prev = nullptr;
             delete temp;
         }
-        element_count--;
+        count--;
     }
     
-    // Get data
-    DataType getLast() const
-    {
-        if (isEmpty())
-        {
-            throw std::logic_error("Container has no elements");
+    // Получение первого элемента
+    DataType front() const {
+        if (empty()) {
+            throw std::logic_error("List is empty");
         }
-        return last->value;
+        return head->data;
     }
     
-    // State
-    bool isEmpty() const
-    {
-        return element_count == 0;
+    bool empty() const {
+        return count == 0;
     }
     
-    std::size_t count() const
-    {
-        return element_count;
+    size_t size() const {
+        return count;
     }
     
+    // Запрещаем копирование и присваивание
+    CustomList(const CustomList&) = delete;
+    CustomList& operator=(const CustomList&) = delete;
 };
 
 #endif

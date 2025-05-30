@@ -4,25 +4,24 @@
 
 bool CharQueue::empty() const
 {
-    return storage.isEmpty();
+    return storage.empty();
 }
 
 size_t CharQueue::size() const
 {
-    return storage.count();
+    return storage.size();
 }
 
 void CharQueue::push(const char& c)
 {
-    storage.appendElement(c);
+    storage.pushBack(c);
 }
 
-void CharQueue::pop()
-{
-    storage.removeLastElement();
+void CharQueue::pop() {
+    storage.removeFront();
 }
 
 char CharQueue::front() const
 {
-    return storage.getLast();
+    return storage.front();
 }
