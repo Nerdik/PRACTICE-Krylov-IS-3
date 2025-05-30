@@ -1,10 +1,12 @@
 //Point 3. Queue class (header)
 
+#ifndef QUEUE_H
+#define QUEUE_H
 
 #include "container_interface.h"
 #include "double_list.h"
 
-class Char_queue : public Container_interface<char>
+class CharQueue : public ContainerInterface<char>
 {
 private:
     CustomList<char> storage;
@@ -17,3 +19,5 @@ public:
     char front() const;
     char top() const override { return front(); }
 };
+
+#endif

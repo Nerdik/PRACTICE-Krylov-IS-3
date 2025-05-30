@@ -1,27 +1,28 @@
 //Point 3. Queue class (realisation)
 
+#include "queue.h"
 
-bool Char_queue::empty() const
+bool CharQueue::empty() const
 {
     return storage.isEmpty();
 }
 
-size_t Char_queue::size() const
+size_t CharQueue::size() const
 {
     return storage.count();
 }
 
-void Char_queue::push(const char& c)
+void CharQueue::push(const char& c)
 {
     storage.appendElement(c);
 }
 
-void Char_queue::pop()
+void CharQueue::pop()
 {
     storage.removeLastElement();
 }
 
-char Char_queue::front() const
+char CharQueue::front() const
 {
     return storage.getLast();
 }
