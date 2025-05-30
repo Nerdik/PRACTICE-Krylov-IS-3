@@ -14,10 +14,12 @@ void taskLaunch()
 
 int main()
 {
-    try {
+    try
+    {
         taskLaunch();
     }
-    catch (const std::runtime_error& e) {
+    catch (const std::runtime_error& e)
+    {
         std::cerr << "Warning! Error: " << e.what() << std::endl;
         return 1;
     }
