@@ -25,3 +25,8 @@ char CharQueue::front() const
 {
     return storage.front();
 }
+
+char CharQueue::back() const
+{
+    return storage.back();
+}

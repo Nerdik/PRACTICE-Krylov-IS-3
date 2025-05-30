@@ -6,7 +6,7 @@
 #include "container_interface.h"
 #include "double_list.h"
 
-class CharQueue : public ContainerInterface<char>
+class CharQueue : public QueueInterface<char>
 {
 private:
     CustomList<char> storage;
@@ -16,7 +16,8 @@ public:
     size_t size() const;
     void push(const char& c) override;
     void pop() override;
-    char front() const;
+    char front() const override;
+    char back() const override;
 };
 
 #endif
