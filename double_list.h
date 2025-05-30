@@ -22,8 +22,10 @@ private:
     ListNode* tail;
     size_t count;
 
-    void clear() {
-        while (!empty()) {
+    void clear()
+    {
+        while (!empty())
+        {
             removeFront();
         }
     }
@@ -31,12 +33,14 @@ private:
 public:
     CustomList() : head(nullptr), tail(nullptr), count(0) {}
     
-    ~CustomList() {
+    ~CustomList()
+    {
         clear();
     }
     
     // Add back
-    void pushBack(const DataType& value) {
+    void pushBack(const DataType& value)
+    {
         ListNode* newNode = new ListNode(value, tail);
         
         if (empty()) {
@@ -49,7 +53,8 @@ public:
     }
     
     // Delete front element
-    void removeFront() {
+    void removeFront()
+    {
         if (empty()) {
             throw std::logic_error("List is empty");
         }
@@ -67,18 +72,22 @@ public:
     }
     
     // Get first element
-    DataType front() const {
-        if (empty()) {
+    DataType front() const
+    {
+        if (empty())
+        {
             throw std::logic_error("List is empty");
         }
         return head->data;
     }
     
-    bool empty() const {
+    bool empty() const
+    {
         return count == 0;
     }
     
-    size_t size() const {
+    size_t size() const 
+    {
         return count;
     }
 };
