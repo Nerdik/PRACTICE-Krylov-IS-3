@@ -1,0 +1,6 @@
+This is a test text file for College Practice.
+As always, Hello World!
+This is a test 456.
+Some symbols: @#$%^&*()
+Numbers: 1, 2, 3, 4, 5.
+Mixed content: a1b2c3d4e5
