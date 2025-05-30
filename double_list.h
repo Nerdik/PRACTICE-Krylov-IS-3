@@ -1,5 +1,7 @@
 ﻿//Point 1. Double link list class tamplate
 
+#ifndef DOUBLE_LIST_H
+#define DOUBLE_LIST_H
 
 #include <stdexcept>
 #include <cstddef>
@@ -109,6 +111,6 @@ public:
         return element_count;
     }
     
-    // Запрет присваивания
-    CustomList& operator=(const CustomList&) = delete;
 };
+
+#endif
